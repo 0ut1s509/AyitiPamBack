@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',  # For JWT authentication
     'corsheaders',
     'factchecks',
+    'ai_factcheck',
+    'openai',
 ]
 
 MIDDLEWARE = [
@@ -160,4 +163,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # This is the default Vite server address
 ]
 
-
+load_dotenv(BASE_DIR / '.env')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

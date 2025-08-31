@@ -42,6 +42,7 @@ class FactCheck(models.Model):
 
 
 
+# factchecks/models.py
 class Submission(models.Model):
     # Database field for the user's name (optional)
     submitter_name = models.CharField(max_length=100, blank=True)
@@ -51,6 +52,9 @@ class Submission(models.Model):
     
     # Database field for the claim text (if user doesn't submit a URL)
     claim_text = models.TextField(blank=True)
+    
+    # Database field for additional context about the claim
+    context = models.TextField(blank=True, null=True)  # Add this field
     
     # Database field for the URL being submitted (if user doesn't submit text)
     url_submitted = models.URLField(max_length=500, blank=True)
@@ -74,10 +78,6 @@ class Submission(models.Model):
     def __str__(self):
         source = self.url_submitted if self.url_submitted else self.claim_text[:50] + "..."
         return f"Submission by {self.submitter_name or 'Anonymous'}: {source}"
-
-
-
-
 
 
 
