@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-diukgxax2ws!byms!w%4m@b3!g&oha_s5$_ph6#yiqck#=9wb#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["theluckiest.pythonanywhere.com","ayitipamnan.onrender.com"]
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', 
+    'rest_framework',
     'rest_framework_simplejwt',  # For JWT authentication
     'corsheaders',
     'factchecks',
@@ -125,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -156,11 +157,13 @@ CORS_ALLOW_CREDENTIALS = True
 # For production, you'll want to add:
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    "https://ayitipamnan.onrender.com/",
 ]
 
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # This is the default Vite server address
+     "https://ayitipamnan.onrender.com/",
 ]
 
 load_dotenv(BASE_DIR / '.env')
